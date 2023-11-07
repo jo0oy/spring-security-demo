@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+
+# Overloaded POST 사용
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+# session
+server:
+  servlet:
+    session:
+      timeout: 10m # 기본이 30분이고 최소는 1분
+
+logging:
+  level:
+    org.hibernate.SQL: debug
