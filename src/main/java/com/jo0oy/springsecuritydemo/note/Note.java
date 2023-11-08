@@ -3,11 +3,9 @@ package com.jo0oy.springsecuritydemo.note;
 import com.jo0oy.springsecuritydemo.global.auditing.BaseTimeEntity;
 import com.jo0oy.springsecuritydemo.user.User;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@ToString
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "note")
@@ -34,7 +32,8 @@ public class Note extends BaseTimeEntity {
         this.user = user;
     }
 
-    public void update(String title, String content) {
+    public void update(String title,
+                       String content) {
         this.title = title;
         this.content = content;
     }
