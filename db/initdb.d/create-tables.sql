@@ -19,10 +19,19 @@ create table note (
                         primary key (id)
 ) engine=InnoDB;
 
+create table notice (
+                      id bigint not null auto_increment,
+                      created_at datetime(6),
+                      modified_at datetime(6),
+                      title varchar(200) not null,
+                      content text,
+                      primary key (id)
+) engine=InnoDB;
+
 ### insert user test data
 ## admin, adminpass
 insert into user(created_at, modified_at, username, password, authority)
-values ('2023-10-20 10:00:30', '2023-10-21 14:01:25', 'admin', '{bcrypt}$2a$10$3CR/6fXZpkQSBLOeqUPrwuYaN/xDYZs2rEletzOS9tETJClAdR.3K', 'ROLE_ADMIN');
+values ('2023-10-05 10:00:30', '2023-10-05 14:01:25', 'admin', '{bcrypt}$2a$10$3CR/6fXZpkQSBLOeqUPrwuYaN/xDYZs2rEletzOS9tETJClAdR.3K', 'ROLE_ADMIN');
 
 ## user1, user1pass
 insert into user(created_at, modified_at, username, password, authority)
@@ -44,3 +53,10 @@ values ('2023-11-02 22:45:10', null, '테스트3', '세번째 테스트 글 내�
 
 insert into note(created_at, modified_at, title, content, user_id)
 values ('2023-11-04 21:25:00', null, '여름 여행 계획', '여름 여행 계획 작성중...', 2);
+
+### insert notice test data
+insert into notice(created_at, modified_at, title, content)
+values ('2023-10-10 09:10:03', null, '환영합니다.', '환영합니다 여러분');
+
+insert into notice(created_at, modified_at, title, content)
+values ('2023-10-11 12:30:00', null, '노트 작성 방법 공지', '1. 회원가입\n2. 로그인\n3. 노트 작성\n4. 저장\n* 본인 외에는 게시글을 볼 수 없습니다.');

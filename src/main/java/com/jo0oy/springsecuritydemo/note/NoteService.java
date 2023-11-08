@@ -6,7 +6,6 @@ import com.jo0oy.springsecuritydemo.note.dto.NoteRegisterDto;
 import com.jo0oy.springsecuritydemo.user.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,7 +53,7 @@ public class NoteService {
         }
 
         if(user.isAdmin()) {
-            return noteRepository.findAllWithUserOrderByDesc("id")
+            return noteRepository.findAllWithUserOrderByIdDesc()
                 .stream()
                 .map(NoteDto::new)
                 .toList();
